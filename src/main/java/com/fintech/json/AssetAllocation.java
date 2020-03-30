@@ -3,6 +3,7 @@ package com.fintech.json;
 public class AssetAllocation {
 
     private Integer riskLevel;
+    private Integer transactionsToReBalance;
     private Integer bonds;
     private Integer largeCap;
     private Integer midCap;
@@ -14,6 +15,12 @@ public class AssetAllocation {
     }
     public void setRiskLevel(Integer riskLevel) {
         this.riskLevel = riskLevel;
+    }
+    public Integer getTransactionsToReBalance() {
+        return transactionsToReBalance;
+    }
+    public void setTransactionsToReBalance(Integer transactionsToReBalance) {
+        this.transactionsToReBalance = transactionsToReBalance;
     }
     public Integer getBonds() {
         return bonds;

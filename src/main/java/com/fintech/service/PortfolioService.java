@@ -7,6 +7,6 @@ public interface PortfolioService {
     
     public PortfolioAllocation getPortfolioForClient(String riskLevel);
     
-    public void reBalancePortfolio(AssetAllocation assertAllocation);
+    public AssetAllocation reBalancePortfolio(AssetAllocation assertAllocation);
 
 }
