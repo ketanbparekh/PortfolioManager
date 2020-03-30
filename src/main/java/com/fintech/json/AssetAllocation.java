@@ -1,7 +1,6 @@
 package com.fintech.json;
 
-/* This pojo represents portfolio allocation in percantages eg:- bonds :80%, smallCap : 20% */
-public class PortfolioAllocation {
+public class AssetAllocation {
 
     private Integer riskLevel;
     private Integer bonds;
@@ -46,5 +45,4 @@ public class PortfolioAllocation {
     public void setSmallCap(Integer smallCap) {
         this.smallCap = smallCap;
     }
-    
 }
