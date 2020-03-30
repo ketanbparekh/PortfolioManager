@@ -33,14 +33,14 @@ public class PortfolioController {
 
     @GetMapping(path = "/riskscore/{riskLevel}", produces = MediaType.APPLICATION_JSON_VALUE)
     public PortfolioAllocation riskAppetite(@PathVariable String riskLevel) {
-        rateLimiter.acquire(1);
+        rateLimiter.acquire();
         validateInput(riskLevel);
         return portfolioService.getPortfolioForClient(riskLevel);
     }
 
     @PostMapping(path = "/rebalance", produces = MediaType.APPLICATION_JSON_VALUE)
     public AssetAllocation recommendAllocation(@RequestBody AssetAllocation asset) {
-        rateLimiter.acquire(1);
+        rateLimiter.acquire();
         validateAssetAllocation(asset);
         return portfolioService.reBalancePortfolio(asset);
     }
