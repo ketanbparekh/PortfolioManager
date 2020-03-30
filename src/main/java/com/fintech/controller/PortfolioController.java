@@ -6,6 +6,8 @@ import com.fintech.json.PortfolioAllocation;
 import com.fintech.service.PortfolioService;
 import com.google.common.util.concurrent.RateLimiter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/portfolio/v1")
 public class PortfolioController {
+
+    protected final static Logger LOGGER = LoggerFactory.getLogger(PortfolioController.class);
 
     @Autowired
     private PortfolioService portfolioService;

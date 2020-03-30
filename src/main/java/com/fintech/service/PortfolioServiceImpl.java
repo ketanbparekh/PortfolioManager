@@ -1,8 +1,12 @@
 package com.fintech.service;
 
+import com.fintech.controller.PortfolioController;
 import com.fintech.json.AssetAllocation;
 import com.fintech.json.PortfolioAllocation;
 import com.fintech.utils.JsonUtils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -14,6 +18,8 @@ import static com.fintech.utils.PortfolioConstants.*;
 
 @Service
 public class PortfolioServiceImpl implements PortfolioService {
+    
+    protected final static Logger LOGGER = LoggerFactory.getLogger(PortfolioServiceImpl.class);
 
     private static Map<Integer, PortfolioAllocation> map = new HashMap<>();
 
