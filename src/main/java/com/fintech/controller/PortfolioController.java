@@ -1,5 +1,11 @@
 package com.fintech.controller;
 
+import com.fintech.exception.FintechException;
+import com.fintech.json.AssetAllocation;
+import com.fintech.json.PortfolioAllocation;
+import com.fintech.service.PortfolioService;
+import com.google.common.util.concurrent.RateLimiter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
@@ -10,26 +16,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fintech.exception.FintechException;
-import com.fintech.json.AssetAllocation;
-import com.fintech.json.PortfolioAllocation;
-import com.fintech.service.PortfolioService;
-
 @RestController
 @RequestMapping(path = "/portfolio/v1")
 public class PortfolioController {
 
     @Autowired
-    PortfolioService portfolioService;
+    private PortfolioService portfolioService;
+    
+    private final double PERMITS_PER_SECOND = 2.0;
+    
+    RateLimiter rateLimiter = RateLimiter.create(PERMITS_PER_SECOND);
 
     @GetMapping(path = "/riskscore/{riskLevel}", produces = MediaType.APPLICATION_JSON_VALUE)
     public PortfolioAllocation riskAppetite(@PathVariable String riskLevel) {
+        rateLimiter.acquire(1);
         validateInput(riskLevel);
         return portfolioService.getPortfolioForClient(riskLevel);
     }
 
     @PostMapping(path = "/rebalance", produces = MediaType.APPLICATION_JSON_VALUE)
     public AssetAllocation recommendAllocation(@RequestBody AssetAllocation asset) {
+        rateLimiter.acquire(1);
         validateAssetAllocation(asset);
         return portfolioService.reBalancePortfolio(asset);
     }

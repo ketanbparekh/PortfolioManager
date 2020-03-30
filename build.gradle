@@ -24,6 +24,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: '2.0.0.M3'
 	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	compile group: 'com.google.guava', name: 'guava', version: '21.0'
+	compile 'org.apache.httpcomponents:httpclient:4.5.12'	
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
