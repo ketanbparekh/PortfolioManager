@@ -9,10 +9,9 @@ TechStack:- I have used Java11, SpringBoot, Guava rate limiter.
 Improvements(TODO)
 
 1. Create a separate class for Validation which can be auto wired. I am right now doing validation inside the controller class.
-2. Add log statements.
-3. ReBalance api algorithm could be done better.
-4. Rate limiting requires more testing,
-5. Junit and mock controller classes should be added. 
+2. ReBalance api algorithm could be done better. 
+3. Rate limiting requires more testing,
+4. Junit and mock controller classes should be added.  
 
 Rest api details:
 
